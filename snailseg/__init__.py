@@ -90,7 +90,7 @@ def cut(sentence):
 		try:
 			sentence = sentence.decode('utf-8')
 		except:
-			sentence = sentence.decode('gbk')
+			sentence = sentence.decode('gbk','ignore')
 	blocks = re.split(ur"([^\u4E00-\u9FA5]+)",sentence)
 	result = []
 	for blk in blocks:
