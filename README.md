@@ -30,6 +30,8 @@ Performance
 Example
 =========
 * https://github.com/fxsjy/snailseg/blob/master/test.py
+* 在线分词效果展示  https://snailsegdemo.appspot.com/
+
 
 Sentences:
 
