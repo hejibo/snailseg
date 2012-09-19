@@ -17,11 +17,11 @@ def get_model(file_dict):
 		prob_v[length] += 1
 		word_all.append(word)
 		for i,char in enumerate(word):
-			if not (char in prob_cv):
-				prob_cv[char] = {}
-			if not (i in prob_cv[char]):
-				prob_cv[char][i] = 0
-			prob_cv[char][i] += freq
+			if not (i in prob_cv):
+				prob_cv[i] = {}
+			if not (char in prob_cv[i]):
+				prob_cv[i][char] = 0
+			prob_cv[i][char] += freq
 
 	total_freq = sum(prob_v.values())
 
@@ -67,10 +67,8 @@ def __cut(sentence):
 
 	while j< length:
 		char = sentence[j]
-		if not (char in prob_cv):
-			prob_cv[char]={}
-		p_1 = prob_v[j-i] *  prob_cv[char].get(0,0)# probility of seg
-		p_2 = prob_v[j-i+1] * prob_cv[char].get(j-i,0)#probility of not seg
+		p_1 = prob_v[j-i] *  prob_cv[0].get(char,0)# probility of seg
+		p_2 = prob_v[j-i+1] * prob_cv[j-i].get(char,0)#probility of not seg
 		part = sentence[i:j]
 		if (p_1 > p_2) and in_dict(part):
 			result.append(part)
